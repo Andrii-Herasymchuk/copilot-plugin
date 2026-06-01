@@ -4,7 +4,7 @@
     "name": "Andrii Herasymchuk"
   },
   "metadata": {
-    "description": "Suppa development tooling — the Suppa Dev Engineer agent, dev commands, and the Suppa MCP server (Tasks, Docs, Entities, Forms).",
+    "description": "Suppa development tooling — the Suppa Dev Engineer agent, dev commands, engineering + Suppa skills, and the bundled Suppa MCP server.",
     "version": "0.1.0"
   },
   "plugins": [

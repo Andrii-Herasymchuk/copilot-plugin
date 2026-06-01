@@ -9,8 +9,5 @@
   "repository": "https://github.com/Andrii-Herasymchuk/copilot-plugin",
   "license": "MIT",
   "keywords": ["suppa", "mcp", "tasks", "docs", "development", "agent"],
-  "agents": "./agents",
-  "skills": "./skills",
-  "commands": "./commands",
   "mcpServers": "./.mcp.json"
 }

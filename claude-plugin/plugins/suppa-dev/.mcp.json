@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "suppa": {
+      "command": "python",
+      "args": ["-m", "suppa_mcp"],
+      "env": {
+        "SUPPA_API_KEY": "${SUPPA_API_KEY}",
+        "SUPPA_BASE_URL": "https://modern.suppa.me",
+        "SUPPA_LANG": "en",
+        "SUPPA_TZ": "Europe/Kyiv"
+      }
+    }
+  }
+}

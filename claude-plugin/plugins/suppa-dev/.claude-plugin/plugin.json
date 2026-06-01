@@ -1,0 +1,10 @@
+{
+  "name": "suppa-dev",
+  "description": "Suppa-aware development for Claude Code: the Suppa Dev Engineer agent, development commands, and the Suppa MCP server (Tasks, Docs, Entities, Forms).",
+  "version": "0.1.0",
+  "author": {
+    "name": "Andrii Herasymchuk"
+  },
+  "keywords": ["suppa", "mcp", "tasks", "development"],
+  "mcpServers": "./.mcp.json"
+}

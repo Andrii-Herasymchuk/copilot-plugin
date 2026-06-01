@@ -1,76 +1,58 @@
-# Suppa Development Agent
+# Suppa Dev — agent plugin
 
-A distributable bundle that makes AI coding assistants **Suppa-aware**. Same agent,
-prompts, and engineering rules, packaged for two ecosystems:
+A single installable plugin that makes any compatible AI coding agent **Suppa-aware**.
+It ships an expert development agent, ready-to-run commands, domain skills, and a
+bundled **Suppa MCP server** (50 `suppa_*` tools for Tasks, Docs, Entities, and Forms).
 
-| Folder | Target | Distribution |
-|--------|--------|--------------|
-| [`vscode-extension/`](vscode-extension/) | VS Code + GitHub Copilot | VS Code Marketplace (`.vsix`) |
-| [`claude-plugin/`](claude-plugin/) | Claude Code | Git-repo plugin marketplace |
+Works with **GitHub Copilot CLI** and **Claude Code** — same repo, no build step.
 
-Both wrap the **Suppa MCP server** (`suppa2.0-mcp-server`, 50 `suppa_*` tools for Tasks,
-Docs, Entities, and Forms) and ship the **Suppa Dev Engineer** agent plus development
-workflows.
+## Install
 
----
-
-## Publish to the VS Code Marketplace
-
-> Requires a **publisher identity** and an **Azure DevOps Personal Access Token** you
-> create yourself. Replace `your-publisher-id` in `vscode-extension/package.json` first.
-
-```powershell
-npm install -g @vscode/vsce
-cd vscode-extension
-
-# 1. Build and test locally (install the .vsix via "Extensions: Install from VSIX")
-vsce package
-
-# 2. One-time: create a publisher at https://marketplace.visualstudio.com/manage
-#    and a PAT (Marketplace > Manage scope) at https://dev.azure.com
-
-# 3. Publish
-vsce login your-publisher-id
-vsce publish
-```
-
-To also publish to **Open VSX** (Cursor / VSCodium):
-
-```powershell
-npm install -g ovsx
-ovsx publish -p <open-vsx-token>
-```
-
-## Publish to Claude Code
-
-Claude Code has **no central marketplace**; you publish by hosting this repo on GitHub.
+### GitHub Copilot CLI
 
 ```bash
-# Push this repository to GitHub, then users run:
-/plugin marketplace add Andrii-Herasymchuk/copilot-plugin
-/plugin install suppa-dev@suppa-dev-marketplace
+copilot plugin marketplace add Andrii-Herasymchuk/copilot-plugin
+copilot plugin install suppa-dev@copilot-plugin
 ```
 
-The marketplace manifest lives at
-[`claude-plugin/.claude-plugin/marketplace.json`](claude-plugin/.claude-plugin/marketplace.json).
+### Claude Code
 
----
+```bash
+/plugin marketplace add Andrii-Herasymchuk/copilot-plugin
+/plugin install suppa-dev@copilot-plugin
+```
 
-## Prerequisites (both targets)
+## Prerequisites
 
-- Python 3.10+ and the `suppa2.0-mcp-server` package installed:
+- **Python 3.10+** on your PATH (runs the bundled MCP server).
+- The MCP runtime dependency:
   ```bash
-  cd suppa2.0-mcp-server && pip install -e .
+  pip install "mcp[cli]>=1.0.0"
   ```
-- A Suppa API token — a **user JWT** for full Tasks access (an integrator key works for
-  Docs/Entities/Forms but returns empty Task results).
+- A **Suppa API token** exported before launching your agent (use a **user JWT** for
+  full Tasks access; an integrator key works for Docs/Entities/Forms):
+  ```bash
+  export SUPPA_API_KEY="your-token"      # PowerShell: $env:SUPPA_API_KEY="your-token"
+  ```
 
-## Before you publish — fill in these placeholders
+The MCP server is bundled at [`mcp-server/`](mcp-server/) and loaded from the plugin
+directory — no separate install or clone needed.
 
-- `vscode-extension/package.json`: `publisher`, `repository.url`, and add an
-  `assets/icon.png` (128×128).
-- `claude-plugin/.claude-plugin/marketplace.json` and `plugins/suppa-dev/.claude-plugin/plugin.json`:
-  `owner` / `author` name and email.
+## What's inside
+
+| Component | Path | What it does |
+|-----------|------|--------------|
+| Agent | [`agents/`](agents/) | **Suppa Dev Engineer** — ships code and keeps Suppa in sync |
+| Commands | [`commands/`](commands/) | `/suppa-implement-task`, `/suppa-standup`, `/suppa-bug-to-task`, `/suppa-document-feature`, `/code-review` |
+| Skills | [`skills/`](skills/) | `engineering-standards`, `suppa-platform`, plus `suppa-tasks`, `suppa-docs`, `suppa-entity`, `suppa-forms` |
+| MCP server | [`.mcp.json`](.mcp.json) + [`mcp-server/`](mcp-server/) | The `suppa` server exposing 50 `suppa_*` tools |
+
+## Usage
+
+- Select the **suppa-dev-engineer** agent (or just describe dev work — it auto-engages).
+- Run a command, e.g. `/suppa-implement-task 1234` or `/suppa-standup`.
+- The skills load automatically when relevant (writing code, or working with Suppa).
+- Verify the MCP server is connected with `/mcp` (Copilot CLI / Claude Code).
 
 ## License
 

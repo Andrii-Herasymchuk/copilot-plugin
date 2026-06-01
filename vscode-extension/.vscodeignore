@@ -1,6 +1,0 @@
-.vscode/**
-.gitignore
-node_modules/**
-**/*.map
-**/.DS_Store
-vsc-extension-quickstart.md

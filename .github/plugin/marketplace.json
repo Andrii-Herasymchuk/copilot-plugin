@@ -10,13 +10,14 @@
   "plugins": [
     {
       "name": "suppa-dev",
-      "source": "./claude-plugin/plugins/suppa-dev",
-      "description": "Suppa-aware development: agent, commands, and the Suppa MCP server (Tasks, Docs, Entities, Forms).",
+      "source": ".",
+      "description": "Suppa-aware development: agent, commands, skills, and the bundled Suppa MCP server (Tasks, Docs, Entities, Forms).",
       "version": "0.1.0",
       "author": {
         "name": "Andrii Herasymchuk"
       },
-      "keywords": ["suppa", "mcp", "tasks", "development"]
+      "license": "MIT",
+      "keywords": ["suppa", "mcp", "tasks", "docs", "development", "agent"]
     }
   ]
 }

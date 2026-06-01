@@ -1,5 +1,16 @@
 {
-	"name": "suppa-dev-agent",
-	"version": "1.0.0",
-	"description": ""
+  "name": "suppa-dev",
+  "description": "Suppa-aware development plugin: the Suppa Dev Engineer agent, development commands, engineering + Suppa skills, and the bundled Suppa MCP server (Tasks, Docs, Entities, Forms).",
+  "version": "0.1.0",
+  "author": {
+    "name": "Andrii Herasymchuk"
+  },
+  "homepage": "https://github.com/Andrii-Herasymchuk/copilot-plugin",
+  "repository": "https://github.com/Andrii-Herasymchuk/copilot-plugin",
+  "license": "MIT",
+  "keywords": ["suppa", "mcp", "tasks", "docs", "development", "agent"],
+  "agents": "./agents",
+  "skills": "./skills",
+  "commands": "./commands",
+  "mcpServers": "./.mcp.json"
 }

@@ -7,9 +7,9 @@
 				"-m",
 				"suppa_mcp"
 			],
-			"cwd": "${workspaceFolder}/suppa2.0-mcp-server",
 			"env": {
-				"SUPPA_API_KEY": "${input:suppa-token}",
+				"PYTHONPATH": "${CLAUDE_PLUGIN_ROOT}/mcp-server/src",
+				"SUPPA_API_KEY": "${SUPPA_API_KEY}",
 				"SUPPA_BASE_URL": "https://modern.suppa.me",
 				"SUPPA_LANG": "en",
 				"SUPPA_TZ": "Europe/Kyiv"

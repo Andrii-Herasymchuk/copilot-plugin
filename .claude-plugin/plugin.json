@@ -9,5 +9,20 @@
   "repository": "https://github.com/Andrii-Herasymchuk/copilot-plugin",
   "license": "MIT",
   "keywords": ["suppa", "mcp", "tasks", "docs", "development", "agent"],
-  "mcpServers": "./.mcp.json"
+  "mcpServers": "./.mcp.json",
+  "userConfig": {
+    "suppa_api_key": {
+      "type": "string",
+      "title": "Suppa API key",
+      "description": "Your Suppa user JWT (used to authenticate the Suppa MCP server). Use a user token for full Tasks access \u2014 an integrator key returns empty Tasks.",
+      "sensitive": true,
+      "required": true
+    },
+    "suppa_base_url": {
+      "type": "string",
+      "title": "Suppa base URL",
+      "description": "Base URL of your Suppa instance.",
+      "default": "https://modern.suppa.me"
+    }
+  }
 }

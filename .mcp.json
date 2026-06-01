@@ -9,8 +9,8 @@
 			],
 			"env": {
 				"PYTHONPATH": "${CLAUDE_PLUGIN_ROOT}/mcp-server/src",
-				"SUPPA_API_KEY": "${SUPPA_API_KEY}",
-				"SUPPA_BASE_URL": "https://modern.suppa.me",
+				"SUPPA_API_KEY": "${user_config.suppa_api_key}",
+				"SUPPA_BASE_URL": "${user_config.suppa_base_url}",
 				"SUPPA_LANG": "en",
 				"SUPPA_TZ": "Europe/Kyiv"
 			}

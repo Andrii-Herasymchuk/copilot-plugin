@@ -29,11 +29,21 @@ copilot plugin install suppa-dev@copilot-plugin
   ```bash
   pip install "mcp[cli]>=1.0.0"
   ```
-- A **Suppa API token** exported before launching your agent (use a **user JWT** for
-  full Tasks access; an integrator key works for Docs/Entities/Forms):
-  ```bash
-  export SUPPA_API_KEY="your-token"      # PowerShell: $env:SUPPA_API_KEY="your-token"
-  ```
+
+### Suppa API key
+
+You do **not** paste your key into chat. On **Claude Code**, when you enable the
+plugin it prompts you in a secure (masked) input for your **Suppa API key** and
+stores it in the system keychain — declared via `userConfig` in
+[`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) (`sensitive: true`) and
+injected into the MCP server as `${user_config.suppa_api_key}`.
+
+Use a **user JWT** for full Tasks access (an integrator key works for
+Docs/Entities/Forms but returns empty Tasks).
+
+> **GitHub Copilot CLI** does not support the secure prompt yet. There, set the key
+> in your environment before launching: `export SUPPA_API_KEY="your-token"`
+> (PowerShell: `$env:SUPPA_API_KEY="your-token"`).
 
 The MCP server is bundled at [`mcp-server/`](mcp-server/) and loaded from the plugin
 directory — no separate install or clone needed.
